@@ -27,15 +27,98 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+
+    <style>
+       
+        table, td {
+            table-layout: fixed;
+            font: 13px arial;
+        }
+
+        select {
+            width: 50px;
+        }
+
+        input{
+            width:50px;
+        }
+
+        table, th {
+            font: bold;
+        }
+    </style>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body class="nav-md">
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Project Metrics Association</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="x_panel">
+
+                                <div class="x_content" style="align-content:center;">
+                                    <!-- start project list -->
+                                    <table class="table table-striped projects" id="tbl_ProjectMetrics" >
+                                        <thead style="text-align:center;">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Releases</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>
+                                                  June
+                                                </td>
+                                                
+                                            <tr>
+                                                <td>
+                                                   2
+                                                </td>
+                                                <td>
+                                                 July
+                                                </td>
+                                               
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <!-- end project list -->                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="QRMIndex.html" class="site_title"> <span>QRM</span><span class="green"> Portal</span></a>
+                        <a href="QRMindex.html" class="site_title"> <span>QRM</span><span class="green"> Portal</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -60,31 +143,41 @@
                             <h3>Menu</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a href="QRMIndex.html"><i class="fa fa-home"></i> Home </a>
+                                    <a href="QRMindex.html"><i class="fa fa-home"></i> Home </a>
 
                                 </li>
                                 <li>
                                     <a><i class="fa fa-wrench"></i> Configuration <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="QRMProject.html">Project</a></li>
+                                        <li>
+                                            <i class="fa fa-chevron-down"></i> <a href="QRMProject.html">Project</a>
+                                            <ul class="nav">
+                                                <li>
+                                                    <a href="AssociateMetrics.html">Association</a>
+                                                </li>
+                                            </ul>
+                                        </li>                                        
                                         <li><a href="QRMMetrics.html">Metrics</a></li>
                                         <li><a href="QRMUser.html">User</a></li>
                                         <li><a href="QRMRole.html">Role</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-square"></i>Upload 
-                                     <span class="fa fa-chevron-down"></span></a>
+                                    <a>
+                                        <i class="fa fa-square"></i>Upload
+                                        <span class="fa fa-chevron-down"></span>
+                                    </a>
                                     <ul class="nav child_menu">
-                                        <li><a href="UploadSteps.html">Upload Wizard</a></li>                                      
+                                        <li><a href="uploadSteps.html">Upload Wizard</a></li>
                                     </ul>
-                                </li>  
+                                </li>
                                 <li>
                                     <a><i class="fa fa-area-chart"></i> Reports <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
+                                        <li><a href="QRMGenerateReports.html">Generate Reports</a></li>
                                         <li><a href="QRMReports.html">MY Saved Reports</a></li>
                                     </ul>
-                                </li>                          
+                                </li>
                             </ul>
                         </div>
 
@@ -181,95 +274,222 @@
                         <div class="page-title">
                             <div class="title_left">
                                 <h3>Projects</h3>
-                            </div>                           
+                            </div>
                         </div>
 
-                        <div class="clearfix"></div>
+                        
+                        <div class="pull-right">
+                            Enter the Project Name to Search : <input type="text" />
+                            <br />
+                        </div>
+                    
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="x_panel">
-                                  
+
                                     <div class="x_content">
                                         <!-- start project list -->
-                                        <table class="table table-striped projects" id="tbl_ProjectMetrics">
+                                        <table id="tbl_ProjectMetrics" class="table table-striped projects" style="width:100%;">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 1%">#</th>
-                                                    <th style="width: 20%">Project Name</th>
-                                                    <th>Project Manager(s)</th>
-                                                    <th>Project Start Date</th>
+                                                    <th>Project Name</th>
                                                     <th>Service Line</th>
-                                                    <th>Capability</th>
-                                                    <th style="width: 20%">#Edit</th>
+                                                    <th>Project Manager</th>
+                                                    <th>Client Name</th>
+                                                    <th>Technology</th>
+                                                    <th>Industry</th>
+                                                    <th>Life Cycle</th>
+                                                    <th>Director</th>
+                                                    <th>Senior Manager</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td>State Auto</td>
                                                     <td>
-                                                        <a>Oregon</a>
-                                                        <br />
-                                                        <small>Created 05.31.2017</small>
-                                                    </td>
-                                                    <td>
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                               Project Managers Name
-                                                            </li>
-                                                           
-                                                        </ul>
-                                                    </td>
-                                                    <td>
-                                                       5/31/2017
-                                                    </td>
-                                                    <td>                                                     
-                                                        SI
-                                                         
-                                                    </td>
-                                                    <td>                                                      
-                                                        Software Development
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info btn-xs" onclick="fnEdit(this);"><i class="fa fa-pencil"></i> Edit </a>
-                                                        <a href="#" class="btn btn-danger btn-xs" onclick="fnDelete(this);"><i class="fa fa-trash-o"></i> Delete </a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <input type="text" class="form-control"/>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control"/>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control"/>
-                                                    </td>
-                                                    <td>
-                                                        <select class="form-control">
+                                                        <select>
                                                             <option>Select Service Line</option>
                                                             <option>SI</option>
                                                             <option>DD</option>
                                                             <option>AMS</option>
                                                         </select>
 
-                                                    </td>
+                                                    </td>                                                    
+                                                    <td>Richard</td>
+                                                    <td>California</td>  
                                                     <td>
-                                                        <select class="form-control">
-                                                            <option>Select Capability</option>
-                                                            <option>Software Development</option>
-                                                            <option>Application Architecture</option>
+                                                        <select>
+                                                            <option>Select Technology</option>
+                                                            <option>Java</option>
+                                                            <option>.NET</option>
 
                                                         </select>
                                                     </td>
-                                                    <td>                                                       
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Industry</option>
+                                                            <option>Public Sector</option>
+                                                            <option>C & IP</option>
+                                                            <option>Insurance</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Test</td>                                                   
+                                                    <td>Thomson</td>
+                                                    <td>Mary</td>                                                    
+                                                    <td>                                                         
+                                                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                            </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Oregon</td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Service Line</option>
+                                                            <option>SI</option>
+                                                            <option>DD</option>
+                                                            <option>AMS</option>
+                                                        </select>
+
+                                                    </td>                                                    
+                                                    <td>Richard</td>
+                                                    <td>Oregon</td>    
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Technology</option>
+                                                            <option>Java</option>
+                                                            <option>.NET</option>
+
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Industry</option>
+                                                            <option>Public Sector</option>
+                                                            <option>C & IP</option>
+                                                            <option>Insurance</option>
+
+                                                        </select>
+                                                    </td>    
+                                                    <td>Agile</td>
+                                                    <td>Richard</td>
+                                                    <td>Lewis</td>                                                    
+                                                    <td>                                                         
+                                                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                                                     </td>
                                                 </tr>
-                                               
+                                                <tr>
+                                                    <td>Homesite</td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Service Line</option>
+                                                            <option>SI</option>
+                                                            <option>DD</option>
+                                                            <option>AMS</option>
+                                                        </select>
+
+                                                    </td>                                                   
+                                                    <td>Harris</td>
+                                                    <td>Newark</td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Technology</option>
+                                                            <option>Java</option>
+                                                            <option>.NET</option>
+
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Industry</option>
+                                                            <option>Public Sector</option>
+                                                            <option>C & IP</option>
+                                                            <option>Insurance</option>
+                                                        </select>
+                                                    </td>      
+                                                    <td>
+                                                        Waterfall
+                                                    </td>
+                                                    <td>Johnson</td>
+                                                    <td>Michael</td>                                                
+                                                    <td>                                                       
+                                                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>D-rive</td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Service Line</option>
+                                                            <option>SI</option>
+                                                            <option>DD</option>
+                                                            <option>AMS</option>
+                                                        </select>
+                                                    </td>                                                  
+                                                    <td>Richard</td>
+                                                    <td>Oregon</td>     
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Technology</option>
+                                                            <option>Java</option>
+                                                            <option>.NET</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Industry</option>
+                                                            <option>Public Sector</option>
+                                                            <option>C & IP</option>
+                                                            <option>Insurance</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>Scrum</td>
+                                                    <td>Richard</td>
+                                                    <td>Richard</td>
+                                                    <td>                                                      
+                                                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="text" /></td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Service Line</option>
+                                                            <option>SI</option>
+                                                            <option>DD</option>
+                                                            <option>AMS</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" /></td>
+                                                    <td><input type="text" /></td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Technology</option>
+                                                            <option>Java</option>
+                                                            <option>.NET</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select>
+                                                            <option>Select Industry</option>
+                                                            <option>Public Sector</option>
+                                                            <option>C & IP</option>
+                                                            <option>Insurance</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input type="text" /></td>
+                                                    <td><input type="text" /></td>                                                    
+                                                    <td><input type="text" /></td>
+                                                    <td>                                                        
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                         <!-- end project list -->
-                                        <button type="submit" class="btn btn-success" >Save</button>
+                                        <button type="submit" class="btn btn-success">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -329,20 +549,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-    <script type="text/javascript">
-      function  fnEdit(this)
-        {
-            var row = $(this).parent().parent().parent().children().index($(this).parent().parent());
-
-        }
-
-        function GetViewRowObject(rowNum)
-        {
-            var row = $("#tbl_ProjectMetrics tbody tr").eq(rowNum);
-            var cross = {};
-            cross = 
-        }
-    </script>
 
 </body>
 </html>
