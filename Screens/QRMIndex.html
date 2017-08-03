@@ -27,6 +27,12 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+        <style>
+            select {
+                width: 50px;
+            }
+        </style>
+   
 </head>
 
 <body class="nav-md">
@@ -35,7 +41,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="QRMIndex.html" class="site_title"> <span>QRM</span><span class="green"> Portal</span></a>
+                        <a href="QRMindex.html" class="site_title"> <span>QRM</span><span class="green"> Portal</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -60,13 +66,20 @@
                             <h3>Menu</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a href="QRMIndex.html"><i class="fa fa-home"></i> Home </a>
+                                    <a href="QRMindex.html"><i class="fa fa-home"></i> Home </a>
 
                                 </li>
                                 <li>
                                     <a><i class="fa fa-wrench"></i> Configuration <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="QRMProject.html">Project</a></li>
+                                        <li>
+                                            <i class="fa fa-chevron-down"></i> <a href="QRMProject.html">Project</a>
+                                            <ul class="nav">
+                                                <li>
+                                                    <a href="AssociateMetrics.html">Association</a>
+                                                </li>
+                                            </ul>
+                                        </li>       
                                         <li><a href="QRMMetrics.html">Metrics</a></li>
                                         <li><a href="QRMUser.html">User</a></li>
                                         <li><a href="QRMRole.html">Role</a></li>
@@ -76,13 +89,14 @@
                                 <li>
                                     <a><i class="fa fa-square"></i> Upload <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="UploadSteps.html">Upload Wizard</a></li>
+                                        <li><a href="uploadSteps.html">Upload Wizard</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-area-chart"></i> Reports <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="QRMReports.html">My Saved Reports</a></li>
+                                        <li><a href="QRMGenerateReports.html">Generate Reports</a></li>
+                                        <li><a href="QRMReports.html">MY Saved Reports</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -183,7 +197,7 @@
                         <div class="count">70</div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                        <span class="count_top"><i class="fa fa-user"></i> Projects Reveiwed</span>
+                        <span class="count_top"><i class="fa fa-user"></i> QRM Reveiwed</span>
                         <div class="count">30</div>
                     </div>
                     <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
@@ -224,7 +238,7 @@
                                         </li>
                                        
                                     </ul>
-                                    <div id="myTabContent" class="tab-content">
+                                    <div id="myTabcontent" class="tab-content">
                                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                                             <div class="col-md-6 col-sm-4 col-xs-12">
                                                 <div class="x_panel tile fixed_height_420">
@@ -333,14 +347,14 @@
                                                                 <td>
                                                                     <table class="tile_info">
                                                                         <tr>
-                                                                            <td>
-                                                                                <p><i class="fa fa-square blue"></i>Public Sector </p>
+                                                                            <td> 
+                                                                                <p><i class="fa fa-square green"> </i>Public Sector </p>
                                                                             </td>
                                                                             <td>30%</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>
-                                                                                <p><i class="fa fa-square green"></i>C & IP </p>
+                                                                                <p><i class="fa fa-square" style="color:lightblue"></i>C & IP </p>
                                                                             </td>
                                                                             <td>10%</td>
                                                                         </tr>
@@ -362,91 +376,109 @@
                                         <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="Project-tab">
                                             <div class="x_content">
                                                 <!-- start project list -->
-                                                <table class="table table-striped projects">
+                                                <!-- start project list -->
+                                                <table class="table table-striped projects" style="width:100%;">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 1%">#</th>
-                                                            <th style="width: 20%">Project Name</th>
-                                                            <th>Project Manager(s)</th>
-                                                            <th>Project Start Date</th>
-                                                            <th>Service Line</th>
-                                                            <th>Capability</th>                                                           
+
+                                                            <th>Project Name</th>
+                                                            <th>Service Line</th>   
+                                                            <th>Client Name</th>  
+                                                            <th>Technology</th>
+                                                            <th>Industry</th>
+                                                            <th>Life Cycle</th>
+                                                            <th>Director</th>
+                                                            <th>Senior Manager</th> 
+                                                            <th>Project Manager</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>#</td>
-                                                            <td>
-                                                                <a>Oregon</a>
-                                                                <br />
-                                                                <small>Created 05.31.2017</small>
-                                                            </td>
-                                                            <td>
-                                                                <ul class="list-inline">
-                                                                    <li>
-                                                                        Project Managers Name
-                                                                    </li>
-
-                                                                </ul>
-                                                            </td>
-                                                            <td>
-                                                                5/31/2017
-                                                            </td>
-                                                            <td>
-                                                               SI
-                                                            </td>
-                                                            <td>
-                                                              Software Development
-                                                            </td>
-                                                            
+                                                            <td>State Auto</td>
+                                                            <td>SI</td>     
+                                                            <td>State Auto</td> 
+                                                            <td>Guide Wire</td>
+                                                            <td>FSI</td>
+                                                            <td>Test</td>                                                          
+                                                            <td>Lewis</td>
+                                                            <td>Michael</td>
+                                                            <td>Richard</td>
                                                         </tr>
-                                                      
+                                                        <tr>
+                                                            <td>Oregon</td>
+                                                            <td>SI</td>
+                                                            <td>California</td>                                                           
+                                                            <td>Java</td>
+                                                            <td>PST</td>
+                                                            <td>Test</td>
+                                                            <td>James</td>
+                                                            <td>Johnson</td>
+                                                            <td>Lawrence</td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>Kentucky</td>
+                                                            <td>DD</td>                                                           
+                                                            <td>Newark</td>
+                                                            <td>.NET</td>
+                                                            <td>PMFT</td>
+                                                            <td>Test</td>
+                                                            <td>Andrew</td>
+                                                            <td>Louis</td>
+                                                            <td>Thomson</td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ACDHS</td>
+                                                            <td>SI</td>                                                            
+                                                            <td>Pennsylvania</td>
+                                                            <td>Cognos</td>
+                                                            <td>SI</td>
+                                                            <td>Test</td>
+                                                            <td>Mathew</td>
+                                                            <td>John</td>
+                                                            <td>Surya</td>
+                                                        </tr>
+
 
                                                     </tbody>
                                                 </table>
+                                                <!-- end project list -->
                                                 <!-- end project list -->
                                               
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="Review-tab">
-                                            <table class="table table-striped projects">
+                                            <table class="table table-striped projects" style="width:100%;">
                                                 <thead>
                                                     <tr>
-                                                        <th style="width: 1%">#</th>
-                                                        <th style="width: 20%">Project Name</th>
-                                                        <th>Project Manager(s)</th>
-                                                        <th>Project Start Date</th>
+
+                                                        <th>Project Name</th>
                                                         <th>Service Line</th>
-                                                        <th>Capability</th>
+                                                        <th>Project Manager</th>
+                                                        <th>Review Date</th>
+                                                        <th>Status</th>                                                      
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>#</td>
-                                                        <td>
-                                                            <a>Oregon</a>
-                                                            <br />
-                                                            <small>Created 05.31.2017</small>
-                                                        </td>
-                                                        <td>
-                                                            <ul class="list-inline">
-                                                                <li>
-                                                                    Project Managers Name
-                                                                </li>
-
-                                                            </ul>
-                                                        </td>
-                                                        <td>
-                                                            5/31/2017
-                                                        </td>
-                                                        <td>
-                                                            SI
-                                                        </td>
-                                                        <td>
-                                                            Software Development
-                                                        </td>
-
+                                                        <td>State Auto</td>
+                                                        <td>SI</td>
+                                                        <td>Richard</td>                                                        
+                                                        <td>7/24/2017</td>
+                                                        <td>Data Uploaded</td>
                                                     </tr>
+                                                    <tr>
+                                                        <td>Oregon</td>
+                                                        <td>SI</td>
+                                                        <td>Thomson</td>
+                                                        <td>7/24/2017</td>
+                                                        <td>Not Started</td>
+                                                    </tr>
+
+
+
 
 
                                                 </tbody>
